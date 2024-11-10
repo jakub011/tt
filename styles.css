@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: Impact, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 5rem;
+    margin-bottom: 20px; /* Space between the coin name and button */
+    letter-spacing: 3px;
+    animation: tiltAnimation 2s infinite;
+    margin-bottom: 200px;
+}
+
+@keyframes tiltAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(35deg);
+    }
+    20% {
+        transform: rotate(20deg);
+    }
+    30% {
+        transform: rotate(25deg);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: left 0.4s ease-in-out, top 0.4s ease-in-out;
+    background-color: #fff;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    position: relative; /* Changed from absolute */
+    font-family: Impact, sans-serif;
+    transition: 200ms ease;
+}
+
+button.hidden {
+    display: none;
+}
+
+button:hover {
+    scale: 1.1;
+    transition: 200ms ease;
+}
+
+#caButton {
+    position: static;
+    margin-top: 20px;
+}
+
+p {
+    letter-spacing: 1px;
+}
