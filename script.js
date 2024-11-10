@@ -36,6 +36,11 @@ caButton.addEventListener('click', () => {
         navigator.clipboard.writeText('Try Again :)').then(() => {
             message.textContent = 'CA has been copied to your clipboard';
 
+            // Remove the "CA has been copied to your clipboard" message after 5 seconds
+            setTimeout(() => {
+                message.textContent = '';
+            }, 5000);
+
             // Display "Has it actually?" after 5 seconds
             setTimeout(() => {
                 secondMessage = document.createElement('p');
