@@ -14,7 +14,7 @@ teaseButton.style.top = '70%'; // Move the button below the coin name
 teaseButton.style.transform = 'translate(-50%, -50%)';
 
 teaseButton.addEventListener('mouseover', () => {
-    if (hoverCount < 2) {
+    if (hoverCount < 1) {
         // Calculate a random position anywhere on the screen while keeping the button visible
         const randomX = Math.random() * (window.innerWidth - teaseButton.offsetWidth);
         const randomY = Math.random() * (window.innerHeight - teaseButton.offsetHeight);
@@ -51,11 +51,14 @@ caButton.addEventListener('click', () => {
                 // Change the button text after 5 seconds
                 caButton.textContent = 'Copy CA, for real this time :)';
                 canCopyCA = true; // Unlock the ability to copy the actual CA
+
+                // Generate social icons after 5 seconds
+                generateSocialIcons();
             }, 5000); // 5-second delay
         });
         clickCount++;
     } else if (clickCount === 1 && canCopyCA) {
-        const cryptoAddress = 'YOUR_CRYPTO_ADDRESS_HERE';
+        const cryptoAddress = 'H45vAYearpHH7gGLegK7o3ihPGpcj1WNLeVBjYjiEgFB';
         navigator.clipboard.writeText(cryptoAddress).then(() => {
             message.textContent = 'Congratulations, let\'s go earn money!';
             // Remove the "Has it actually?" message if it exists
@@ -66,3 +69,56 @@ caButton.addEventListener('click', () => {
         clickCount++;
     }
 });
+
+function generateSocialIcons() {
+    const socialContainer = document.createElement('div');
+    socialContainer.style.marginTop = '20px';
+    socialContainer.style.display = 'flex';
+    socialContainer.style.gap = '80px'; // Increased gap for more distance between icons
+    socialContainer.style.justifyContent = 'center';
+
+    // Common style for icons
+    const iconStyle = `
+        width: 80px; /* Increased size */
+        transition: transform 0.3s ease-in-out; /* Smooth hover animation */
+        cursor: pointer;
+    `;
+
+    // Function to create an icon with a link
+    function createIcon(src, alt, href) {
+        const link = document.createElement('a');
+        link.href = href;
+        link.target = '_blank'; // Open link in a new tab
+        link.rel = 'noopener noreferrer'; // Security measure for new tab
+
+        const icon = document.createElement('img');
+        icon.src = src;
+        icon.alt = alt;
+        icon.style.cssText = iconStyle;
+        icon.addEventListener('mouseover', () => {
+            icon.style.transform = 'scale(1.1)';
+        });
+        icon.addEventListener('mouseout', () => {
+            icon.style.transform = 'scale(1)';
+        });
+
+        link.appendChild(icon);
+        return link;
+    }
+
+    // Telegram Icon
+    const telegramIcon = createIcon('./src/telegram.png', 'Telegram', 'https://t.me/+z4oMLIkYIddhMDFk');
+    socialContainer.appendChild(telegramIcon);
+
+    // PumpFun Icon
+    const pumpFunIcon = createIcon('./src/pumpfun.png', 'PumpFun', 'https://www.pumpfun.com/yourprofile');
+    socialContainer.appendChild(pumpFunIcon);
+
+    // X (formerly Twitter) Icon
+    const xIcon = createIcon('./src/x.png', 'X', 'https://x.com/TeaseCoinCTO');
+    socialContainer.appendChild(xIcon);
+
+    // Append the container to the main container or another element
+    const mainContainer = document.querySelector('.container');
+    mainContainer.appendChild(socialContainer);
+}
