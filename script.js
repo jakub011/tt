@@ -111,7 +111,7 @@ function generateSocialIcons() {
     socialContainer.appendChild(telegramIcon);
 
     // PumpFun Icon
-    const pumpFunIcon = createIcon('./src/pumpfun.png', 'PumpFun', 'https://www.pumpfun.com/yourprofile');
+    const pumpFunIcon = createIcon('./src/pumpfun.png', 'PumpFun', 'https://pump.fun/coin/45kRgVT2NCrW3daqo89LtMieJem1NFucPwkqwTV6pump');
     socialContainer.appendChild(pumpFunIcon);
 
     // X (formerly Twitter) Icon
