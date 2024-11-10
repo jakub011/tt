@@ -115,7 +115,7 @@ function generateSocialIcons() {
     socialContainer.appendChild(pumpFunIcon);
 
     // X (formerly Twitter) Icon
-    const xIcon = createIcon('./src/x.png', 'X', 'https://x.com/TeaseCoinCTO');
+    const xIcon = createIcon('./src/X.png', 'X', 'https://x.com/TeaseCoinCTO');
     socialContainer.appendChild(xIcon);
 
     // Append the container to the main container or another element
