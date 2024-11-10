@@ -5,6 +5,7 @@ const message = document.getElementById('message');
 let hoverCount = 0;
 let clickCount = 0;
 let canCopyCA = false; // Lock for copying the actual CA
+let secondMessage; // Reference for "Has it actually?" message
 
 // Set initial position of the button for smooth transitions from the start
 teaseButton.style.position = 'absolute';
@@ -13,7 +14,7 @@ teaseButton.style.top = '70%'; // Move the button below the coin name
 teaseButton.style.transform = 'translate(-50%, -50%)';
 
 teaseButton.addEventListener('mouseover', () => {
-    if (hoverCount < 1) {
+    if (hoverCount < 2) {
         // Calculate a random position anywhere on the screen while keeping the button visible
         const randomX = Math.random() * (window.innerWidth - teaseButton.offsetWidth);
         const randomY = Math.random() * (window.innerHeight - teaseButton.offsetHeight);
@@ -37,7 +38,7 @@ caButton.addEventListener('click', () => {
 
             // Display "Has it actually?" after 5 seconds
             setTimeout(() => {
-                const secondMessage = document.createElement('p');
+                secondMessage = document.createElement('p');
                 secondMessage.textContent = 'Has it actually?';
                 secondMessage.style.marginTop = '10px';
                 message.after(secondMessage);
@@ -52,9 +53,10 @@ caButton.addEventListener('click', () => {
         const cryptoAddress = 'YOUR_CRYPTO_ADDRESS_HERE';
         navigator.clipboard.writeText(cryptoAddress).then(() => {
             message.textContent = 'Congratulations, let\'s go earn money!';
-            // Remove any additional messages
-            const additionalMessages = document.querySelectorAll('#message + p');
-            additionalMessages.forEach(msg => msg.remove());
+            // Remove the "Has it actually?" message if it exists
+            if (secondMessage) {
+                secondMessage.remove();
+            }
         });
         clickCount++;
     }
