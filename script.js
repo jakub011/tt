@@ -58,7 +58,7 @@ caButton.addEventListener('click', () => {
         });
         clickCount++;
     } else if (clickCount === 1 && canCopyCA) {
-        const cryptoAddress = 'SOON';
+        const cryptoAddress = '45kRgVT2NCrW3daqo89LtMieJem1NFucPwkqwTV6pump';
         navigator.clipboard.writeText(cryptoAddress).then(() => {
             message.textContent = 'Congratulations, let\'s go earn money!';
             // Remove the "Has it actually?" message if it exists
